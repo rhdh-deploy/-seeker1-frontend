@@ -1,0 +1,48 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name:  seeker1-poi-map-app-dev
+  annotations:
+    argocd/app-name:  seeker1-poi-map-app-dev
+    backstage.io/kubernetes-id:  seeker1-poi-map-app
+    backstage.io/kubernetes-namespace:  seeker1
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: rhdh-deploy/ seeker1-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.a1jxqhzp.eastus2.aroapp.io/dev-pipelines/ns/ seeker1/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.a1jxqhzp.eastus2.aroapp.io/k8s/ns/ seeker1/deployments/ seeker1-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.a1jxqhzp.eastus2.aroapp.io/#https://github.com/rhdh-deploy/ seeker1-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http:// seeker1-poi-map-app- seeker1.apps.a1jxqhzp.eastus2.aroapp.io
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/seeker1"
+  system: workshop-system- seeker1
+  consumesApis:
+    - gateway-api- seeker1
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system- seeker1
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/seeker1"
